@@ -36,7 +36,7 @@ namespace Host
         static SchedulerCenter()
         {
             Instance = new SchedulerCenter();
-            xx();
+           // xx();
         }
 
         public static IScheduler xx()
@@ -84,7 +84,7 @@ namespace Host
                     return _scheduler;
                 }
 
-                /*
+               
 
 
                   //如果不存在sqlite数据库，则创建
@@ -103,8 +103,8 @@ namespace Host
                   //}
 
                   //MySql存储
-                  DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("MySQL", "Server=localhost;Database=quartz;User Id=root;Password=123456;"));
-                  //DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("SqlServer", "server=MARKJI-PC;user id=sa;password=password01!;persistsecurityinfo=True;database=quartz"));
+                 // DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("MySQL", "Server=localhost;Database=quartz;User Id=root;Password=123456;"));
+                  DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("SqlServer", "server=MARKJI-PC;user id=sa;password=password01!;persistsecurityinfo=True;database=quartz"));
                   var serializer = new JsonObjectSerializer();
                   serializer.Initialize();
                   var jobStore = new JobStoreTX
@@ -112,9 +112,9 @@ namespace Host
                       DataSource = "default",
                       TablePrefix = "QRTZ_",
                       InstanceId = "AUTO",
-                      DriverDelegateType = typeof(MySQLDelegate).AssemblyQualifiedName, //MySql存储
+                      //DriverDelegateType = typeof(MySQLDelegate).AssemblyQualifiedName, //MySql存储
                       //DriverDelegateType = typeof(SQLiteDelegate).AssemblyQualifiedName,  //SQLite存储
-                      //DriverDelegateType = typeof(SqlServerDelegate).AssemblyQualifiedName,
+                      DriverDelegateType = typeof(SqlServerDelegate).AssemblyQualifiedName,
                       ObjectSerializer = serializer,
 
 
@@ -122,7 +122,7 @@ namespace Host
                   DirectSchedulerFactory.Instance.CreateScheduler("benny" + "Scheduler", "AUTO", new DefaultThreadPool(), jobStore);
                   _scheduler = SchedulerRepository.Instance.Lookup("benny" + "Scheduler").Result;
 
-                  **/
+              
 
 
                 _scheduler.Start();//默认开始调度器
