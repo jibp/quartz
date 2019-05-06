@@ -31,42 +31,41 @@ namespace Host
         /// 任务调度对象
         /// </summary>
         public static readonly SchedulerCenter Instance;
-
-        private static IScheduler _scheduler;
         static SchedulerCenter()
         {
             Instance = new SchedulerCenter();
-           // xx();
         }
 
-        public static IScheduler xx()
-        {
-            //  IScheduler _scheduler;
-            NameValueCollection properties = new NameValueCollection
-            {
+        private IScheduler _scheduler;
 
-                //["quartz.scheduler.instanceId"] = "instance_one",
-                //["quartz.threadPool.type"] = "Quartz.Simpl.SimpleThreadPool, Quartz",
-                //["quartz.threadPool.threadCount"] = "10",
-                //["quartz.jobStore.misfireThreshold"] = "60000",
-                ["quartz.jobStore.type"] = "Quartz.Impl.AdoJobStore.JobStoreTX, Quartz",
-                ["quartz.dataSource.mysql.provider"] = "MySql-65",
-                ["quartz.dataSource.mysql.connectionString"] = "Server=localhost;Database=quartz;Uid=root;Pwd=123456;",
-                ["quartz.jobStore.dataSource"] = "mysql",
-                ["quartz.jobStore.driverDelegateType"] = "Quartz.Impl.AdoJobStore.MySQLDelegate, Quartz",
-                //["quartz.jobStore.useProperties"] = "false",
+        //public static IScheduler xx()
+        //{
+        //    //  IScheduler _scheduler;
+        //    NameValueCollection properties = new NameValueCollection
+        //    {
+
+        //        //["quartz.scheduler.instanceId"] = "instance_one",
+        //        //["quartz.threadPool.type"] = "Quartz.Simpl.SimpleThreadPool, Quartz",
+        //        //["quartz.threadPool.threadCount"] = "10",
+        //        //["quartz.jobStore.misfireThreshold"] = "60000",
+        //        ["quartz.jobStore.type"] = "Quartz.Impl.AdoJobStore.JobStoreTX, Quartz",
+        //        ["quartz.dataSource.mysql.provider"] = "MySql-65",
+        //        ["quartz.dataSource.mysql.connectionString"] = "Server=localhost;Database=quartz;Uid=root;Pwd=123456;",
+        //        ["quartz.jobStore.dataSource"] = "mysql",
+        //        ["quartz.jobStore.driverDelegateType"] = "Quartz.Impl.AdoJobStore.MySQLDelegate, Quartz",
+        //        //["quartz.jobStore.useProperties"] = "false",
                 
-                ["quartz.jobStore.tablePrefix"] = "QRTZ_",
+        //        ["quartz.jobStore.tablePrefix"] = "QRTZ_",
 
                 
                 
                 
-                ["quartz.serializer.type"] = "json"
-            };
-            var factory = new StdSchedulerFactory(properties);
-            _scheduler = factory.GetScheduler().Result;
-            return _scheduler;
-        }
+        //        ["quartz.serializer.type"] = "json"
+        //    };
+        //    var factory = new StdSchedulerFactory(properties);
+        //    _scheduler = factory.GetScheduler().Result;
+        //    return _scheduler;
+        //}
 
 
         /// <summary>
@@ -80,31 +79,30 @@ namespace Host
             {
                 if (_scheduler != null)
                 {
-
                     return _scheduler;
                 }
 
-               
 
 
-                  //如果不存在sqlite数据库，则创建
-                  //if (!File.Exists("File/sqliteScheduler.db"))
-                  //{
-                  //    if (!Directory.Exists("File"))
-                  //        Directory.CreateDirectory("File");
-                  //    using (var connection = new SqliteConnection("Data Source=File/sqliteScheduler.db"))
-                  //    {
-                  //        connection.OpenAsync().Wait();
-                  //        string sql = File.ReadAllTextAsync("tables_sqlite.sql").Result;
-                  //        var command = new SqliteCommand(sql, connection);
-                  //        command.ExecuteNonQuery();
-                  //        connection.Close();
-                  //    }
-                  //}
 
-                  //MySql存储
-                 // DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("MySQL", "Server=localhost;Database=quartz;User Id=root;Password=123456;"));
-                  DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("SqlServer", "server=MARKJI-PC;user id=sa;password=password01!;persistsecurityinfo=True;database=quartz"));
+                //如果不存在sqlite数据库，则创建
+                //if (!File.Exists("File/sqliteScheduler.db"))
+                //{
+                //    if (!Directory.Exists("File"))
+                //        Directory.CreateDirectory("File");
+                //    using (var connection = new SqliteConnection("Data Source=File/sqliteScheduler.db"))
+                //    {
+                //        connection.OpenAsync().Wait();
+                //        string sql = File.ReadAllTextAsync("tables_sqlite.sql").Result;
+                //        var command = new SqliteCommand(sql, connection);
+                //        command.ExecuteNonQuery();
+                //        connection.Close();
+                //    }
+                //}
+
+                //MySql存储
+                // DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("MySQL", "Server=localhost;Database=quartz;User Id=root;Password=123456;"));
+                DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("SqlServer", "server=MARKJI-PC;user id=sa;password=password01!;persistsecurityinfo=True;database=quartz"));
                   var serializer = new JsonObjectSerializer();
                   serializer.Initialize();
                   var jobStore = new JobStoreTX
@@ -119,11 +117,8 @@ namespace Host
 
 
                   };
-                  DirectSchedulerFactory.Instance.CreateScheduler("benny" + "Scheduler", "AUTO", new DefaultThreadPool(), jobStore);
-                  _scheduler = SchedulerRepository.Instance.Lookup("benny" + "Scheduler").Result;
-
-              
-
+                DirectSchedulerFactory.Instance.CreateScheduler("benny" + "Scheduler", "AUTO", new DefaultThreadPool(), jobStore);
+                _scheduler = SchedulerRepository.Instance.Lookup("benny" + "Scheduler").Result;
 
                 _scheduler.Start();//默认开始调度器
                 return _scheduler;
