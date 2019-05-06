@@ -102,7 +102,7 @@ namespace Host
 
                 //MySql存储
                 // DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("MySQL", "Server=localhost;Database=quartz;User Id=root;Password=123456;"));
-                DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("SqlServer", "server=MARKJI-PC;user id=sa;password=password01!;persistsecurityinfo=True;database=quartz"));
+                DBConnectionManager.Instance.AddConnectionProvider("default", new DbProvider("SqlServer", "server=.;user id=sa;password=password01!;persistsecurityinfo=True;database=quartz"));
                   var serializer = new JsonObjectSerializer();
                   serializer.Initialize();
                   var jobStore = new JobStoreTX
