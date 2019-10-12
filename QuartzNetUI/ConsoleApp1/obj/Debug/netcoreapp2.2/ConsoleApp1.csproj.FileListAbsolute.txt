@@ -9,3 +9,13 @@ C:\Code\quartzui\quartzui-master\QuartzNetUI\ConsoleApp1\obj\Debug\netcoreapp2.2
 C:\Code\quartzui\quartzui-master\QuartzNetUI\ConsoleApp1\bin\Debug\netcoreapp2.2\ConsoleApp1.pdb
 C:\Code\quartzui\quartzui-master\QuartzNetUI\ConsoleApp1\obj\Debug\netcoreapp2.2\ConsoleApp1.dll
 C:\Code\quartzui\quartzui-master\QuartzNetUI\ConsoleApp1\obj\Debug\netcoreapp2.2\ConsoleApp1.pdb
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\bin\Debug\netcoreapp2.2\ConsoleApp1.deps.json
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\bin\Debug\netcoreapp2.2\ConsoleApp1.runtimeconfig.json
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\bin\Debug\netcoreapp2.2\ConsoleApp1.runtimeconfig.dev.json
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\bin\Debug\netcoreapp2.2\ConsoleApp1.dll
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\bin\Debug\netcoreapp2.2\ConsoleApp1.pdb
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\obj\Debug\netcoreapp2.2\ConsoleApp1.csprojAssemblyReference.cache
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\obj\Debug\netcoreapp2.2\ConsoleApp1.AssemblyInfoInputs.cache
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\obj\Debug\netcoreapp2.2\ConsoleApp1.AssemblyInfo.cs
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\obj\Debug\netcoreapp2.2\ConsoleApp1.dll
+D:\Code\quartz\QuartzNetUI\ConsoleApp1\obj\Debug\netcoreapp2.2\ConsoleApp1.pdb
